@@ -1,0 +1,84 @@
+/* app css stylesheet */
+
+/* Main page start */
+.setting-panel {margin-top: 15px;}
+.content-box {margin-top: 15px;}
+.my-btn {
+	width: 100px;
+	margin-top: 10px;
+}
+.table{
+	max-width: 750px;
+	margin: auto;
+}
+.table thead th {vertical-align: middle;}
+.my-tr td {text-align: left}
+.table .img-column {padding: 0}
+/*.my-tr img {max-width: 125px}*/
+
+.form-control.my-input {
+	display: inline-block;
+	width: 100px;
+	height: 2rem;
+}
+
+.img-wrap {
+	width: 125px;
+	height: 125px;
+	border-radius: 5%;
+	overflow:hidden;
+}
+.img-wrap img {
+	height: 100%;
+	left: 50%;
+	position: relative;
+	transform: translateX(-50%);
+}
+th span {
+	font-size: 14px;
+	font-weight: 500;
+	padding-left: 25px;
+}
+
+.sort-wrap {display: inline-block; text-align: center;}
+.sort-wrap a {transition: 0.3s; font-size: 16px; line-height: 1;}
+th span a:hover, .sort-wrap a:hover {text-decoration: none; color: #ccc;}
+/* Main page end */
+
+/* Modal dialog start */
+#popUpDialog-bg {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto; 
+	background: rgba(0,0,0,.6);
+	text-align: center;
+	white-space: nowrap;
+}
+#popUpDialog-bg::after {
+	content: '';
+	display: inline-block;
+	width: 0;
+	height: 100%;
+	vertical-align: middle;
+}
+#popUpDialog-container {
+	display: inline-block;
+	vertical-align: middle;
+}
+#popUpDialog {
+	padding: 15px;
+	border-radius: 1%;
+	text-align: left;
+	white-space: normal;
+	background-color: #fff;  
+}
+.header-ct {display: inline-block}
+.btn.btn-close {
+	border-radius: 50%;
+	transform: rotate(45deg);
+	vertical-align: top;
+}
+/* Modal dialog end */

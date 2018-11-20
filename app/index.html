@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" data-ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" data-ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" data-ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" data-ng-app="myApp" class="no-js"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Menu app</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="lib/html5-boilerplate/dist/css/normalize.css">
+	<link rel="stylesheet" href="lib/html5-boilerplate/dist/css/main.css">
+	<script src="lib/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+	<link rel="stylesheet" href="lib/bootstrap/bootstrap.min.css">
+	<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<!--<ul class="menu">
+		<li><a href="#!/view1">view1</a></li>
+		<li><a href="#!/view2">view2</a></li>
+	</ul> -->
+
+	<div ng-controller="MainCtrl">
+		<div class="setting-panel">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-2">
+						<button ng-click="predicate=''" type="button" class="btn btn-primary my-btn" title="Remove sorting, clear localStorage">Clear sort</button>
+						<button ng-click="clearFilters()" type="button" class="btn btn-primary my-btn" title="Remove filters, clear localStorage">Clear filter</button>
+					</div>
+					<div class="col-md-4">
+						<p>Rating</p>
+						<span>min: </span><input type="number" min="0" ng-model="minR" ng-change="addMinR()" class="form-control my-input">
+						<span>max: </span><input type="number" min="0" ng-model="maxR" ng-change="addMaxR()" class="form-control my-input">
+					</div>
+					<div class="col-md-4">
+						<p>Price</p>
+						<span>min: </span><input type="number" min="0" ng-model="minP" ng-change="addMinP()" class="form-control my-input">
+						<span>max: </span><input type="number" min="0" ng-model="maxP" ng-change="addMaxP()" class="form-control my-input">
+					</div>
+				</div>
+			</div>	
+		</div>
+
+		<div class="content-box">
+			<div class="container">
+				<div class="row">
+					<table class="table table-bordered table-hover" make-sortable>
+						<thead class="thead-default">
+							<tr>
+								<th>№</th>
+								<th>
+									Title <span>sort: <a href ng-click="sortTable('title')">A-Z</a>/<a href ng-click="sortTable('-title')">Z-A</a></span>
+								</th>
+								<th>Image</th>
+								<th>
+									<div class="sort-wrap">
+										<a href ng-click="sortTable('rating')">&#9650;</a>
+										Rating
+										<a href ng-click="sortTable('-rating')">&#9660;</a>
+									</div>
+								</th>
+								<th>
+									<div class="sort-wrap">
+										<a href ng-click="sortTable('price')">&#9650;</a>
+										Price
+										<a href ng-click="sortTable('-price')">&#9660;</a>
+									</div>
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="item in items | orderBy:predicate | filter:priceFilter | filter:ratingFilter" class="my-tr">
+								<td>{{$index+1}}</td>
+								<td><a href ng-click="openPopUpDialog(item)">{{item.title}}</a></td>
+								<td class="img-column">
+									<div class="img-wrap">
+										<a href ng-click="openPopUpDialog(item)"><img ng-src="{{item.image}}" alt="{{item.title}}"></a>
+									</div>
+								</td>
+								<td>{{item.rating}}</td>
+								<td>{{item.price}}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		<pop-up-dialog></pop-up-dialog>
+	</div>
+	</div>
+
+
+	<!--[if lt IE 7]>
+			<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+		<![endif]-->
+
+		<div ng-view></div>
+
+		<div>AngularJS seed app: v<span app-version></span></div>
+
+	<!-- In production use:
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+-->
+
+<script src="lib/angular/angular.js"></script>
+<script src="lib/angular-route/angular-route.js"></script>
+<script src="app.js"></script>
+<!-- <script src="view1/view1.js"></script> -->
+<!-- <script src="view2/view2.js"></script> -->
+<script src="core/version/version.js"></script>
+<script src="core/version/version-directive.js"></script>
+<script src="core/version/interpolate-filter.js"></script>
+
+<script src="lib/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
+</body>
+</html>
